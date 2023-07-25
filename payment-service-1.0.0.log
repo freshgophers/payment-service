@@ -1,0 +1,2 @@
+{"level":"warn","ts":1690265115.106136,"caller":"log/log.go:37","msg":"Logger sync fail","error":"sync /dev/stdout: inappropriate ioctl for device"}
+{"level":"info","ts":1690265115.107285,"caller":"server/server.go:47","msg":"http server started on http://localhost:80"}

@@ -8,6 +8,7 @@ import (
 	"os/signal"
 	"payment-service/internal/service/catalogue"
 	"payment-service/internal/service/payment"
+	"payment-service/pkg/epay"
 	"syscall"
 	"time"
 
@@ -21,9 +22,10 @@ import (
 )
 
 const (
-	schema      = "product"
+	schema      = "payment"
 	version     = "1.0.0"
-	description = "product-service"
+	description = "payment-service"
+	configsDir  = "configs"
 )
 
 // Run initializes whole application.
@@ -67,10 +69,23 @@ func Run() {
 		return
 	}
 
+	ePayClient := epay.NewClient(epay.Credential{
+		TerminalID:    configs.EPay.TerminalID,
+		ClientID:      configs.EPay.ClientID,
+		ClientSecret:  configs.EPay.ClientSecret,
+		OauthEndpoint: configs.EPay.OauthEndpoint,
+		Endpoint:      configs.EPay.Endpoint,
+		JSLink:        configs.EPay.JSLink,
+		BackLink:      configs.EPay.BackLink,
+		PostLink:      configs.EPay.PostLink,
+		Amount:        configs.EPay.Amount,
+	})
+
 	handlers, err := handler.New(
 		handler.Dependencies{
 			Configs:          configs,
 			CatalogueService: catalogueService,
+			EPayClient:       ePayClient,
 			PaymentService:   paymentService,
 		},
 		handler.WithHTTPHandler())

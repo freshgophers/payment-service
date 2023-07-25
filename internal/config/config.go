@@ -23,6 +23,19 @@ type (
 	Configs struct {
 		HTTP     HTTPConfig
 		POSTGRES DatabaseConfig
+		EPay     EPayConfig
+	}
+
+	EPayConfig struct {
+		TerminalID    string `mapstructure:"terminalID"`
+		ClientID      string `mapstructure:"clientID"`
+		ClientSecret  string `mapstructure:"clientSecret"`
+		OauthEndpoint string `mapstructure:"oauthEndpoint"`
+		Endpoint      string `mapstructure:"endpoint"`
+		JSLink        string `mapstructure:"jsLink"`
+		BackLink      string `mapstructure:"backLink"`
+		PostLink      string `mapstructure:"postLink"`
+		Amount        string `mapstructure:"amount"`
 	}
 
 	HTTPConfig struct {

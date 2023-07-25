@@ -10,6 +10,7 @@ import (
 	"payment-service/internal/handler/http"
 	"payment-service/internal/service/catalogue"
 	"payment-service/internal/service/payment"
+	"payment-service/pkg/epay"
 	"payment-service/pkg/server/router"
 )
 
@@ -17,6 +18,7 @@ type Dependencies struct {
 	Configs          config.Configs
 	CatalogueService *catalogue.Service
 	PaymentService   *payment.Service
+	EPayClient       *epay.Client
 }
 
 // Configuration is an alias for a function that will take in a pointer to a Handler and modify it
