@@ -16,6 +16,51 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/billings": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "billings"
+                ],
+                "summary": "Add a new billing to the database",
+                "parameters": [
+                    {
+                        "description": "body param",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/billing.Request"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/response.Object"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/response.Object"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/response.Object"
+                        }
+                    }
+                }
+            }
+        },
         "/categories": {
             "get": {
                 "consumes": [
@@ -434,6 +479,62 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "billing.Request": {
+            "type": "object",
+            "properties": {
+                "account_id": {
+                    "type": "string"
+                },
+                "amount": {
+                    "type": "string"
+                },
+                "backlink": {
+                    "type": "string"
+                },
+                "correlation_id": {
+                    "type": "string"
+                },
+                "currency": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "failure_backlink": {
+                    "type": "string"
+                },
+                "failure_post_link": {
+                    "type": "string"
+                },
+                "invoice_id": {
+                    "type": "string"
+                },
+                "language": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "payment_type": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "post_link": {
+                    "type": "string"
+                },
+                "source": {
+                    "type": "string"
+                },
+                "terminal_id": {
+                    "type": "string"
+                }
+            }
+        },
         "category.Request": {
             "type": "object",
             "properties": {

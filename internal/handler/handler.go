@@ -9,12 +9,14 @@ import (
 	"payment-service/internal/config"
 	"payment-service/internal/handler/http"
 	"payment-service/internal/service/catalogue"
+	"payment-service/internal/service/payment"
 	"payment-service/pkg/server/router"
 )
 
 type Dependencies struct {
 	Configs          config.Configs
 	CatalogueService *catalogue.Service
+	PaymentService   *payment.Service
 }
 
 // Configuration is an alias for a function that will take in a pointer to a Handler and modify it
@@ -68,10 +70,11 @@ func WithHTTPHandler() Configuration {
 
 		productHandler := http.NewProductHandler(h.dependencies.CatalogueService)
 		categoryHandler := http.NewCategory(h.dependencies.CatalogueService)
-
+		billingHandler := http.NewBilling(h.dependencies.PaymentService)
 		h.HTTP.Route("/api/v1", func(r chi.Router) {
 			r.Mount("/products", productHandler.Routes())
 			r.Mount("/categories", categoryHandler.Routes())
+			r.Mount("/billings", billingHandler.Routes())
 		})
 
 		return

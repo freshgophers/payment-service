@@ -6,7 +6,8 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
-
+	"payment-service/internal/service/catalogue"
+	"payment-service/internal/service/payment"
 	"syscall"
 	"time"
 
@@ -15,7 +16,6 @@ import (
 	"payment-service/internal/config"
 	"payment-service/internal/handler"
 	"payment-service/internal/repository"
-	"payment-service/internal/service/catalogue"
 	"payment-service/pkg/log"
 	"payment-service/pkg/server"
 )
@@ -51,8 +51,19 @@ func Run() {
 		catalogue.WithCategoryCache(repositories.Category),
 		catalogue.WithProductCache(repositories.Product),
 	)
+
 	if err != nil {
 		logger.Error("ERR_INIT_CATALOGUE_SERVICE", zap.Error(err))
+		return
+	}
+
+	paymentService, err := payment.New(
+		payment.WithBillingRepository(repositories.Billing),
+		payment.WithBillingCache(repositories.Billing),
+	)
+
+	if err != nil {
+		logger.Error("ERR_INIT_PAYMENT_SERVICE", zap.Error(err))
 		return
 	}
 
@@ -60,6 +71,7 @@ func Run() {
 		handler.Dependencies{
 			Configs:          configs,
 			CatalogueService: catalogueService,
+			PaymentService:   paymentService,
 		},
 		handler.WithHTTPHandler())
 	if err != nil {
