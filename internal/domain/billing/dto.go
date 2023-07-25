@@ -41,7 +41,7 @@ type Response struct {
 func ParseFromEntity(data Entity) (res Response) {
 	res = Response{
 		ID:   data.ID,
-		Link: data.PostLink,
+		Link: "https://freshgopher-account-service.onrender.com/api/v1/invoices/" + data.ID + "/pay",
 	}
 
 	return
