@@ -1,0 +1,26 @@
+
+CREATE TABLE IF NOT EXISTS billings (
+    created_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    id                  UUID PRIMARY KEY DEFAULT GEN_RANDOM_UUID(),
+    correlation_id      VARCHAR NOT NULL,
+    source              VARCHAR NOT NULL,
+    invoice_id          VARCHAR NOT NULL UNIQUE,
+    amount              NUMERIC NOT NULL,
+    currency            VARCHAR NOT NULL,
+    description         VARCHAR NOT NULL,
+    terminal_id         VARCHAR NOT NULL,
+    account_id          VARCHAR NULL,
+    name                VARCHAR NULL,
+    phone               VARCHAR NULL,
+    email               VARCHAR NULL,
+    language            VARCHAR NULL,
+    data                VARCHAR NULL,
+    card_save           BOOLEAN NOT NULL DEFAULT FALSE,
+    card_id             VARCHAR NULL,
+    back_link           VARCHAR NOT NULL,
+    failure_back_link   VARCHAR NULL,
+    post_link           VARCHAR NOT NULL,
+    failure_post_link   VARCHAR NULL,
+    processed           BOOLEAN NOT NULL DEFAULT FALSE 
+);

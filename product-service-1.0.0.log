@@ -1,0 +1,12 @@
+{"level":"warn","ts":1690188511.096093,"caller":"log/log.go:37","msg":"Logger sync fail","error":"sync /dev/stdout: inappropriate ioctl for device"}
+{"level":"error","ts":1690188511.096641,"caller":"app/app.go:42","msg":"ERR_INIT_REPOSITORY","error":"sql: undefined data source name ","stacktrace":"product-service/internal/app.Run\n\t/Users/rakhmet_zhanserik/Projects/payment-service/internal/app/app.go:42\nmain.main\n\t/Users/rakhmet_zhanserik/Projects/payment-service/main.go:8\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:250"}
+{"level":"warn","ts":1690188589.379155,"caller":"log/log.go:37","msg":"Logger sync fail","error":"sync /dev/stdout: inappropriate ioctl for device"}
+{"level":"error","ts":1690188589.379466,"caller":"app/app.go:42","msg":"ERR_INIT_REPOSITORY","error":"sql: undefined data source name ","stacktrace":"payment-service/internal/app.Run\n\t/Users/rakhmet_zhanserik/Projects/payment-service/internal/app/app.go:42\nmain.main\n\t/Users/rakhmet_zhanserik/Projects/payment-service/main.go:8\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:250"}
+{"level":"warn","ts":1690188630.810455,"caller":"log/log.go:37","msg":"Logger sync fail","error":"sync /dev/stdout: inappropriate ioctl for device"}
+{"level":"info","ts":1690188630.810889,"caller":"server/server.go:47","msg":"http server started on http://localhost:80"}
+{"level":"warn","ts":1690196481.441956,"caller":"log/log.go:37","msg":"Logger sync fail","error":"sync /dev/stdout: inappropriate ioctl for device"}
+{"level":"info","ts":1690196481.442284,"caller":"server/server.go:47","msg":"http server started on http://localhost:80"}
+{"level":"warn","ts":1690196485.580827,"caller":"log/log.go:37","msg":"Logger sync fail","error":"sync /dev/stdout: inappropriate ioctl for device"}
+{"level":"info","ts":1690196485.581655,"caller":"server/server.go:47","msg":"http server started on http://localhost:80"}
+{"level":"warn","ts":1690261061.406263,"caller":"log/log.go:37","msg":"Logger sync fail","error":"sync /dev/stdout: inappropriate ioctl for device"}
+{"level":"info","ts":1690261061.4066718,"caller":"server/server.go:47","msg":"http server started on http://localhost:80"}

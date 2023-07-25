@@ -1,0 +1,17 @@
+### List of products from the store
+GET http://localhost/api/v1/products
+
+### Add a new product to the store
+POST http://localhost/api/v1/products
+Content-Type: application/json
+
+
+### Read the product from the store
+GET http://localhost/api/v1/products/1
+
+### Update the product in the store
+PUT http://localhost/api/v1/products/1
+Content-Type: application/json
+
+### Delete the product from the store
+DELETE http://localhost/api/v1/products/1

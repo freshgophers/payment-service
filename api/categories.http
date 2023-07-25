@@ -1,0 +1,20 @@
+### List of categories from the store
+GET http://localhost/api/v1/categories
+
+### Add a new category to the store
+POST http://localhost/api/v1/categories
+Content-Type: application/json
+
+### Read the category from the store
+GET http://localhost/api/v1/categories/1
+
+### Update the category in the store
+PUT http://localhost/api/v1/categories/1
+Content-Type: application/json
+
+
+### Delete the category from the store
+DELETE http://localhost/api/v1/categories/1
+
+### List of books from the store
+GET http://localhost/api/v1/categories/1/books
